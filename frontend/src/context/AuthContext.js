@@ -1,36 +1,29 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
+// src/context/AuthContext.js
+import { createContext, useState, useEffect } from 'react';
+import {jwtDecode} from 'jwt-decode';
 
-// Create a context
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
-  // Check if a token is present in localStorage on mount
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = jwtDecode(token);
-      setUser(decodedToken);
+      const decodedUser = jwtDecode(token);
+      setUser(decodedUser);
     }
   }, []);
 
-  // Login function to set user and store token
   const login = (token) => {
-    localStorage.setItem('authToken', token);
-    const decodedToken = jwtDecode(token);
-    setUser(decodedToken);
-    navigate('/home');
+    localStorage.setItem('token', token);
+    const decodedUser = jwtDecode(token);
+    setUser(decodedUser);
   };
 
-  // Logout function
   const logout = () => {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
     setUser(null);
-    navigate('/');
   };
 
   return (
@@ -39,5 +32,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;

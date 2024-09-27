@@ -1,22 +1,22 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 
-const dotenv = require('dotenv');
-
-dotenv.config();
-
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+const JWT_SECRET = process.env.JWT_SECRET; 
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log(err));
 
 // User Schema
 const UserSchema = new mongoose.Schema({
@@ -35,12 +35,12 @@ app.post('/api/login', async (req, res) => {
     return res.status(400).json({ message: 'Invalid credentials' });
   }
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
+  // Directly compare without hashing
+  if (user.password !== password) {
     return res.status(400).json({ message: 'Invalid credentials' });
   }
 
-  const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: '1h' });
   res.json({ token });
 });
 
@@ -53,8 +53,8 @@ app.post('/api/register', async (req, res) => {
     return res.status(400).json({ message: 'Username already exists' });
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = new User({ username, password: hashedPassword });
+  // Create new user without hashing the password
+  const newUser = new User({ username, password });
   await newUser.save();
 
   res.status(201).json({ message: 'User registered successfully' });

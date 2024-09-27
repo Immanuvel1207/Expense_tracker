@@ -1,0 +1,15 @@
+.dashboard-container {
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .expense-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
