@@ -6,22 +6,22 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   return (
-  <>
-    <Header/>
     <AuthProvider>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
+        <Footer />
       </Router>
     </AuthProvider>
-    <Footer/>
-  </>
   );
 };
 

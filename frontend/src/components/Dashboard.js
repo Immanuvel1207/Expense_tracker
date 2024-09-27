@@ -6,9 +6,8 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <h2>Your Expenses</h2>
-      {/* Map over your expenses and display them here */}
       <div className="expense-item">
-        <h4>Expense Title</h4>
+        <h4>Food</h4>
         <p>Amount: $100</p>
       </div>
     </div>
