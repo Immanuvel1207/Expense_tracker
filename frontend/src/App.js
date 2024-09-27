@@ -4,9 +4,13 @@ import { AuthProvider } from './context/AuthContext';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
+  <>
+    <Header/>
     <AuthProvider>
       <Router>
         <Routes>
@@ -16,6 +20,8 @@ const App = () => {
         </Routes>
       </Router>
     </AuthProvider>
+    <Footer/>
+  </>
   );
 };
 
