@@ -1,6 +1,7 @@
 // src/components/Register.js
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Register.css'; // Ensure this line is present
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -25,8 +26,8 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="register-container">
+      <h1 style={{color:'white'}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -1,0 +1,65 @@
+/* RegistrationForm.css */
+
+/* Set the body background color */
+body {
+    background-color: #2f2f31;
+  }
+  
+  /* Style for the section containing the form */
+  section {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    display: block;
+    margin: 50px auto; /* Center the section */
+    width: 300px; /* Fixed width for the form */
+    height: auto;
+    padding: 10px;
+    border-radius: 6px; /* Rounded corners */
+    box-shadow: 0px 0px 300px 1px #333; /* Shadow effect */
+  }
+  
+  /* Style for the form */
+  form {
+    padding: 40px 30px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 4px; /* Rounded corners for form */
+  }
+  
+  /* Style for the label spans */
+  form span {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 5px;
+    color: #999; /* Light grey color for labels */
+  }
+  
+  /* Style for the input fields */
+  input {
+    padding: 9px 10px;
+    width: 90%; /* Width of input fields */
+    display: inline-block;
+    margin-bottom: 15px;
+    border-radius: 4px; /* Rounded corners for input fields */
+    border: none; /* No border */
+    background-color: #2f2f31; /* Dark background for inputs */
+    color: #ddd; /* Light text color */
+  }
+  
+  /* Style for the submit button */
+  button {
+    margin: 20px auto;
+    display: block;
+    padding: 10px 30px;
+    border: 1px solid #333; /* Border for button */
+    border-radius: 4px; /* Rounded corners for button */
+    background-color: #ddd; /* Light background for button */
+    color: #333; /* Dark text color */
+    font-size: 17px; /* Font size for button */
+  }
+  
+  /* Hover effect for the button */
+  button:hover {
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
